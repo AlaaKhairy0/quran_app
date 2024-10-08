@@ -3,6 +3,12 @@ import 'package:quran_app/core/colors_manager.dart';
 
 class MyTheme {
   static ThemeData lightTheme = ThemeData(
+      textTheme: TextTheme(
+          labelMedium: TextStyle(
+        fontSize: 22,
+        fontWeight: FontWeight.w500,
+      )),
+      dividerColor: ColorsManager.goldenColor,
       bottomNavigationBarTheme: BottomNavigationBarThemeData(
         type: BottomNavigationBarType.fixed,
         backgroundColor: ColorsManager.goldenColor,
