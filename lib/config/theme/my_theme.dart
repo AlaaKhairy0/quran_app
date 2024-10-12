@@ -4,7 +4,7 @@ import 'package:quran_app/core/colors_manager.dart';
 class MyTheme {
   static ThemeData lightTheme = ThemeData(
       cardTheme: CardTheme(
-        margin: EdgeInsets.symmetric(
+        margin: const EdgeInsets.symmetric(
           horizontal: 12,
           vertical: 6,
         ),
@@ -17,6 +17,12 @@ class MyTheme {
       primaryColor: ColorsManager.goldenColor,
       scaffoldBackgroundColor: Colors.transparent,
       textTheme: const TextTheme(
+          labelSmall: TextStyle(
+            fontSize: 22,
+            color: Colors.black,
+            fontWeight: FontWeight.w600,
+            letterSpacing: 0,
+          ),
           bodyMedium: TextStyle(
               color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
           labelMedium: TextStyle(
