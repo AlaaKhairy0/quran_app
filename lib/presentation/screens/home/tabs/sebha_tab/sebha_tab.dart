@@ -1,12 +1,105 @@
 import 'package:flutter/material.dart';
+import 'package:quran_app/core/assets_manager.dart';
+import 'package:quran_app/core/colors_manager.dart';
 
-class SebhaTab extends StatelessWidget {
-  const SebhaTab({super.key});
+class SebhaTab extends StatefulWidget {
+  SebhaTab({super.key});
+
+  @override
+  State<SebhaTab> createState() => _SebhaTabState();
+}
+
+class _SebhaTabState extends State<SebhaTab> {
+  double rotationAngle = 0.0;
+  int counter = 0;
+  int tasbeehIndex = 0;
+  List<String> tsabeeh = [
+    'سبحان الله',
+    'الحمدلله',
+    'لا اله الا الله',
+    'الله اكبر'
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.brown,
+    return Stack(
+      children: [
+        Positioned(
+            top: 15,
+            right: 134,
+            child: Image.asset(
+              AssetsManager.sebhaHeadLogo,
+              height: 125,
+              width: 93,
+            )),
+        Positioned(
+            top: 105,
+            right: 76,
+            child: Transform.rotate(
+              angle: rotationAngle,
+              child: Image.asset(
+                AssetsManager.sebhaBodyLogo,
+                height: 252,
+                width: 254,
+              ),
+            )),
+        Positioned(
+          top: 400,
+          left: 110,
+          child: Column(
+            children: [
+              Text('Number Of Tasbeehs',
+                  style: Theme.of(context).textTheme.labelSmall),
+              const SizedBox(
+                height: 28,
+              ),
+              Container(
+                alignment: Alignment.center,
+                height: 81,
+                width: 76,
+                decoration: BoxDecoration(
+                  color: ColorsManager.goldenColor.withOpacity(.57),
+                  borderRadius: BorderRadius.circular(25),
+                ),
+                child: Text(
+                  '$counter',
+                  style: TextStyle(fontSize: 22, color: Colors.black),
+                ),
+              ),
+              const SizedBox(
+                height: 28,
+              ),
+              InkWell(
+                onTap: tasbeehCount,
+                child: Container(
+                  alignment: Alignment.center,
+                  width: 160,
+                  height: 60,
+                  decoration: BoxDecoration(
+                    color: ColorsManager.goldenColor,
+                    borderRadius: BorderRadius.circular(25),
+                  ),
+                  child: Text(tsabeeh[tasbeehIndex]),
+                ),
+              )
+            ],
+          ),
+        )
+      ],
     );
+  }
+
+  void tasbeehCount() {
+    ++counter;
+    if (counter > 33) {
+      counter = 0;
+      tasbeehIndex++;
+      if (tasbeehIndex > 3) {
+        tasbeehIndex = 0;
+      }
+    }
+    setState(() {
+      rotationAngle += .25;
+    });
   }
 }
