@@ -252,8 +252,10 @@ class QuranTab extends StatelessWidget {
                 itemCount: suraNames.length,
                 itemBuilder: (context, index) {
                   return QuranItemWidget(
-                    versesNumber: versesNumber[index].toString(),
-                    suraNames: suraNames[index],
+                    suraItem: SuraItem(
+                        versesNumber: versesNumber[index].toString(),
+                        suraName: suraNames[index],
+                        index: index),
                   );
                 },
               ))
