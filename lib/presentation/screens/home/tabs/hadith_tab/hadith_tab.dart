@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:quran_app/core/assets_manager.dart';
 import 'package:quran_app/presentation/screens/home/tabs/hadith_tab/widgets/hadith_header_widget.dart';
-import 'package:quran_app/presentation/screens/home/tabs/hadith_tab/widgets/hadith_list_widget.dart';
+import 'package:quran_app/presentation/screens/home/tabs/hadith_tab/widgets/hadith_title_widget.dart';
 
 class HadithTab extends StatefulWidget {
   const HadithTab({super.key});

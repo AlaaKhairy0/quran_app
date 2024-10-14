@@ -6,7 +6,7 @@ import 'package:quran_app/presentation/screens/quran_details_screen/widgets/sura
 import '../../../core/assets_manager.dart';
 
 class QuranDetailsScreen extends StatefulWidget {
-  QuranDetailsScreen({super.key});
+  const QuranDetailsScreen({super.key});
 
   @override
   State<QuranDetailsScreen> createState() => _QuranDetailsScreenState();
@@ -32,13 +32,18 @@ class _QuranDetailsScreenState extends State<QuranDetailsScreen> {
             automaticallyImplyLeading: false,
             leading: IconButton(
               color: Colors.black,
-              icon: Icon(Icons.arrow_back),
+              icon: const Icon(
+                Icons.arrow_back,
+                size: 28,
+              ),
               onPressed: () {
                 Navigator.pop(context);
               },
             )),
         body: verses.isEmpty
-            ? CircularProgressIndicator()
+            ? CircularProgressIndicator(
+                color: Theme.of(context).primaryColor,
+              )
             : ListView.builder(
                 itemCount: verses.length,
                 itemBuilder: (context, index) {
