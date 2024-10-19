@@ -17,6 +17,21 @@ class MyTheme {
       primaryColor: ColorsManager.goldenColor,
       scaffoldBackgroundColor: Colors.transparent,
       textTheme: const TextTheme(
+          bodyLarge: TextStyle(
+            color: Colors.white,
+            fontSize: 22,
+            fontWeight: FontWeight.w500,
+          ),
+          headlineSmall: TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+            fontWeight: FontWeight.w400,
+          ),
+          headlineMedium: TextStyle(
+            fontSize: 20,
+            color: Colors.black,
+            fontWeight: FontWeight.w600,
+          ),
           labelSmall: TextStyle(
             fontSize: 22,
             color: Colors.black,
@@ -24,7 +39,10 @@ class MyTheme {
             letterSpacing: 0,
           ),
           bodyMedium: TextStyle(
-              color: Colors.white, fontSize: 20, fontWeight: FontWeight.w600),
+            color: Colors.white,
+            fontSize: 20,
+            fontWeight: FontWeight.w600,
+          ),
           labelMedium: TextStyle(
             fontSize: 22,
             fontWeight: FontWeight.w500,
