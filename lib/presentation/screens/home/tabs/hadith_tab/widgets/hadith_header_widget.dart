@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quran_app/core/strings_manager.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HadithHeaderWidget extends StatelessWidget {
   const HadithHeaderWidget({super.key});
@@ -8,7 +8,7 @@ class HadithHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         alignment: Alignment.center,
-        padding: EdgeInsets.symmetric(
+        padding: const EdgeInsets.symmetric(
           vertical: 6,
         ),
         width: double.infinity,
@@ -21,7 +21,7 @@ class HadithHeaderWidget extends StatelessWidget {
           ),
         ),
         child: Text(
-          StringsManager.hadithHeader,
+          AppLocalizations.of(context)!.ahadith,
           style: Theme.of(context).textTheme.labelMedium,
         ));
   }

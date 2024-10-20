@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quran_app/presentation/screens/home/tabs/settings_tab/widgets/language_bottom_sheet.dart';
 import 'package:quran_app/presentation/screens/home/tabs/settings_tab/widgets/theme_bottom_sheet.dart';
 
@@ -17,7 +18,7 @@ class SettingsTab extends StatelessWidget {
               vertical: 4,
             ),
             child: Text(
-              'Theme',
+              AppLocalizations.of(context)!.theme,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
@@ -27,16 +28,16 @@ class SettingsTab extends StatelessWidget {
             },
             child: Container(
               padding: EdgeInsets.all(7),
-              child: Text(
-                'Light',
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
                 border: Border.all(
                   color: Theme.of(context).primaryColor,
                   width: 2,
                 ),
+              ),
+              child: Text(
+                AppLocalizations.of(context)!.light,
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
             ),
           ),
@@ -48,7 +49,7 @@ class SettingsTab extends StatelessWidget {
               vertical: 4,
             ),
             child: Text(
-              'Language',
+              AppLocalizations.of(context)!.language,
               style: Theme.of(context).textTheme.headlineMedium,
             ),
           ),
@@ -58,16 +59,16 @@ class SettingsTab extends StatelessWidget {
             },
             child: Container(
               padding: const EdgeInsets.all(7),
-              child: Text(
-                'English',
-                style: Theme.of(context).textTheme.headlineSmall,
-              ),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
                 border: Border.all(
                   color: Theme.of(context).primaryColor,
                   width: 2,
                 ),
+              ),
+              child: Text(
+                'English',
+                style: Theme.of(context).textTheme.headlineSmall,
               ),
             ),
           ),
