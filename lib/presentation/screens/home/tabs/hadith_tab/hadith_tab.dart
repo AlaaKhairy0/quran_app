@@ -21,7 +21,7 @@ class _HadithTabState extends State<HadithTab> {
       child: Column(
         children: [
           Image.asset(AssetsManager.hadithLogo),
-          const HadithHeaderWidget(),
+          HadithHeaderWidget(),
           ahadith.isEmpty
               ? Center(
                   child: CircularProgressIndicator(

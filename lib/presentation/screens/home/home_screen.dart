@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quran_app/core/assets_manager.dart';
-import 'package:quran_app/core/strings_manager.dart';
 import 'package:quran_app/presentation/screens/home/tabs/hadith_tab/hadith_tab.dart';
 import 'package:quran_app/presentation/screens/home/tabs/quran_tab/quran_tab.dart';
 import 'package:quran_app/presentation/screens/home/tabs/radio_tab/radio_tab.dart';
@@ -37,7 +37,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
-          title: const Text(StringsManager.appTitle),
+          title: Text(AppLocalizations.of(context)!.appTitle),
         ),
         bottomNavigationBar: BottomNavigationBar(
             currentIndex: selectedTabIndex,
@@ -45,34 +45,34 @@ class _HomeScreenState extends State<HomeScreen> {
               selectedTabIndex = index;
               setState(() {});
             },
-            items: const [
+            items: [
               BottomNavigationBarItem(
-                icon: ImageIcon(
+                icon: const ImageIcon(
                   AssetImage(AssetsManager.quranIcon),
                 ),
-                label: StringsManager.quranTab,
+                label: AppLocalizations.of(context)!.quranTab,
               ),
               BottomNavigationBarItem(
-                icon: ImageIcon(
+                icon: const ImageIcon(
                   AssetImage(AssetsManager.hadithIcon),
                 ),
-                label: StringsManager.hadithTab,
+                label: AppLocalizations.of(context)!.hadithTab,
               ),
               BottomNavigationBarItem(
-                icon: ImageIcon(
+                icon: const ImageIcon(
                   AssetImage(AssetsManager.sebhaIcon),
                 ),
-                label: StringsManager.sebhaTab,
+                label: AppLocalizations.of(context)!.sebhaTab,
               ),
               BottomNavigationBarItem(
-                icon: ImageIcon(
+                icon: const ImageIcon(
                   AssetImage(AssetsManager.radioIcon),
                 ),
-                label: StringsManager.radioTab,
+                label: AppLocalizations.of(context)!.radioTab,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
-                label: StringsManager.settingsTab,
+                icon: const Icon(Icons.settings),
+                label: AppLocalizations.of(context)!.settingsTab,
               ),
             ]),
         body: tabs[selectedTabIndex],
