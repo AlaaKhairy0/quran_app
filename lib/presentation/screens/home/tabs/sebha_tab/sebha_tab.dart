@@ -60,7 +60,7 @@ class _SebhaTabState extends State<SebhaTab> {
           IntrinsicWidth(
             child: Container(
               alignment: Alignment.center,
-              padding: EdgeInsets.symmetric(
+              padding: const EdgeInsets.symmetric(
                 horizontal: 20,
                 vertical: 12,
               ),
@@ -81,7 +81,7 @@ class _SebhaTabState extends State<SebhaTab> {
             onTap: tasbeehCount,
             child: IntrinsicWidth(
               child: Container(
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: 24,
                   vertical: 12,
                 ),
