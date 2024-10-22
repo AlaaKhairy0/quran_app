@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:quran_app/core/assets_manager.dart';
 import 'package:quran_app/core/colors_manager.dart';
 
@@ -22,70 +23,82 @@ class _SebhaTabState extends State<SebhaTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned(
-            top: 15,
-            right: 134,
-            child: Image.asset(
-              AssetsManager.sebhaHeadLogo,
-              height: 125,
-              width: 93,
-            )),
-        Positioned(
-            top: 105,
-            right: 76,
-            child: Transform.rotate(
-              angle: rotationAngle,
-              child: Image.asset(
-                AssetsManager.sebhaBodyLogo,
-                height: 252,
-                width: 254,
-              ),
-            )),
-        Positioned(
-          top: 400,
-          left: 110,
-          child: Column(
-            children: [
-              Text('Number Of Tasbeehs',
-                  style: Theme.of(context).textTheme.labelSmall),
-              const SizedBox(
-                height: 28,
-              ),
-              Container(
-                alignment: Alignment.center,
-                height: 81,
-                width: 76,
-                decoration: BoxDecoration(
-                  color: ColorsManager.goldenColor.withOpacity(.57),
-                  borderRadius: BorderRadius.circular(25),
+    return Center(
+      child: Column(
+        children: [
+          Expanded(
+            flex: 11,
+            child: Stack(
+              clipBehavior: Clip.none,
+              alignment: Alignment.topCenter,
+              children: [
+                Image.asset(
+                  AssetsManager.sebhaHeadLogo,
+                  height: MediaQuery.of(context).size.height * .15,
                 ),
-                child: Text(
-                  '$counter',
-                  style: TextStyle(fontSize: 22, color: Colors.black),
-                ),
-              ),
-              const SizedBox(
-                height: 28,
-              ),
-              InkWell(
-                onTap: tasbeehCount,
-                child: Container(
-                  alignment: Alignment.center,
-                  width: 160,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    color: ColorsManager.goldenColor,
-                    borderRadius: BorderRadius.circular(25),
+                Positioned(
+                  top: 88,
+                  child: Transform.rotate(
+                    angle: rotationAngle,
+                    child: Image.asset(
+                      height: MediaQuery.of(context).size.height * .28,
+                      AssetsManager.sebhaBodyLogo,
+                    ),
                   ),
-                  child: Text(tsabeeh[tasbeehIndex]),
                 ),
-              )
-            ],
+              ],
+            ),
           ),
-        )
-      ],
+          const Spacer(
+            flex: 1,
+          ),
+          Text(AppLocalizations.of(context)!.tsbehNumber,
+              style: Theme.of(context).textTheme.labelSmall),
+          const Spacer(
+            flex: 1,
+          ),
+          IntrinsicWidth(
+            child: Container(
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(
+                horizontal: 20,
+                vertical: 12,
+              ),
+              decoration: BoxDecoration(
+                color: ColorsManager.goldenColor.withOpacity(.57),
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Text(
+                '$counter',
+                style: const TextStyle(fontSize: 22, color: Colors.black),
+              ),
+            ),
+          ),
+          const Spacer(
+            flex: 2,
+          ),
+          InkWell(
+            onTap: tasbeehCount,
+            child: IntrinsicWidth(
+              child: Container(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 12,
+                ),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  color: ColorsManager.goldenColor,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(tsabeeh[tasbeehIndex]),
+              ),
+            ),
+          ),
+          const Spacer(
+            flex: 3,
+          ),
+        ],
+      ),
     );
   }
 
