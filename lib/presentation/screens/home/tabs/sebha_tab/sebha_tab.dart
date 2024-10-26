@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:quran_app/core/assets_manager.dart';
-import 'package:quran_app/core/colors_manager.dart';
+import 'package:quran_app/provider/theme_provider.dart';
 
 class SebhaTab extends StatefulWidget {
   SebhaTab({super.key});
@@ -23,6 +24,8 @@ class _SebhaTabState extends State<SebhaTab> {
 
   @override
   Widget build(BuildContext context) {
+    // SettingsProvider myProvider = Provider.of(context);
+    ThemeProvider themeProvider = Provider.of(context);
     return Center(
       child: Column(
         children: [
@@ -33,7 +36,9 @@ class _SebhaTabState extends State<SebhaTab> {
               alignment: Alignment.topCenter,
               children: [
                 Image.asset(
-                  AssetsManager.sebhaHeadLogo,
+                  themeProvider.isLightTheme()
+                      ? AssetsManager.sebhaHeadLight
+                      : AssetsManager.sebhaHeadDark,
                   height: MediaQuery.of(context).size.height * .15,
                 ),
                 Positioned(
@@ -42,7 +47,9 @@ class _SebhaTabState extends State<SebhaTab> {
                     angle: rotationAngle,
                     child: Image.asset(
                       height: MediaQuery.of(context).size.height * .28,
-                      AssetsManager.sebhaBodyLogo,
+                      themeProvider.isLightTheme()
+                          ? AssetsManager.sebhaBodyLight
+                          : AssetsManager.sebhaBodyDark,
                     ),
                   ),
                 ),
@@ -65,12 +72,12 @@ class _SebhaTabState extends State<SebhaTab> {
                 vertical: 12,
               ),
               decoration: BoxDecoration(
-                color: ColorsManager.goldenColor.withOpacity(.57),
+                color: Theme.of(context).primaryColor,
                 borderRadius: BorderRadius.circular(16),
               ),
               child: Text(
                 '$counter',
-                style: const TextStyle(fontSize: 22, color: Colors.black),
+                style: Theme.of(context).textTheme.bodySmall,
               ),
             ),
           ),
@@ -87,10 +94,13 @@ class _SebhaTabState extends State<SebhaTab> {
                 ),
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: ColorsManager.goldenColor,
+                  color: Theme.of(context).dividerColor,
                   borderRadius: BorderRadius.circular(20),
                 ),
-                child: Text(tsabeeh[tasbeehIndex]),
+                child: Text(
+                  tsabeeh[tasbeehIndex],
+                  style: Theme.of(context).textTheme.displayMedium,
+                ),
               ),
             ),
           ),

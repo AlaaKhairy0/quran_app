@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:quran_app/provider/language_provider.dart';
 
 class LanguageBottomSheetWidget extends StatelessWidget {
   const LanguageBottomSheetWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // SettingsProvider myProvider = Provider.of(context);
+    LanguageProvider languageProvider = Provider.of(context);
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
@@ -17,11 +21,25 @@ class LanguageBottomSheetWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildSelectedLanguageWidget(context, 'English'),
+          InkWell(
+            onTap: () {
+              languageProvider.changeAppLang('en');
+            },
+            child: languageProvider.isEnglish()
+                ? buildSelectedLanguageWidget(context, 'English')
+                : buildUnSelectedLanguageWidget(context, 'English'),
+          ),
           const SizedBox(
             height: 12,
           ),
-          buildUnSelectedLanguageWidget(context, 'العربية'),
+          InkWell(
+            onTap: () {
+              languageProvider.changeAppLang('ar');
+            },
+            child: !(languageProvider.isEnglish())
+                ? buildSelectedLanguageWidget(context, 'العربية')
+                : buildUnSelectedLanguageWidget(context, 'العربية'),
+          ),
         ],
       ),
     );
@@ -36,10 +54,8 @@ class LanguageBottomSheetWidget extends StatelessWidget {
           selectedLanguage,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
-        Icon(
+        const Icon(
           Icons.check,
-          color: Colors.white,
-          size: 28,
         ),
       ],
     );
@@ -52,9 +68,7 @@ class LanguageBottomSheetWidget extends StatelessWidget {
       children: [
         Text(
           unSelectedLanguage,
-          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: Colors.black,
-              ),
+          style: Theme.of(context).textTheme.bodySmall,
         ),
       ],
     );

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:quran_app/core/assets_manager.dart';
-import 'package:quran_app/core/strings_manager.dart';
 import 'package:quran_app/presentation/screens/home/tabs/hadith_tab/hadith_tab.dart';
+import 'package:quran_app/provider/theme_provider.dart';
 
 class HadithDetailsScreen extends StatelessWidget {
   const HadithDetailsScreen({super.key});
@@ -9,25 +11,20 @@ class HadithDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Hadith hadith = ModalRoute.of(context)?.settings.arguments as Hadith;
+    // SettingsProvider myProvider = Provider.of(context);
+    ThemeProvider themeProvider = Provider.of(context);
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(AssetsManager.lightMainBg),
+          image: themeProvider.isLightTheme()
+              ? const AssetImage(AssetsManager.lightMainBg)
+              : const AssetImage(AssetsManager.darkMainBg),
           fit: BoxFit.fill,
         ),
       ),
       child: Scaffold(
         appBar: AppBar(
-          leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: const Icon(
-                Icons.arrow_back,
-                color: Colors.black,
-                size: 28,
-              )),
-          title: const Text(StringsManager.appTitle),
+          title: Text(AppLocalizations.of(context)!.appTitle),
         ),
         body: Card(
             child: SingleChildScrollView(
@@ -37,13 +34,10 @@ class HadithDetailsScreen extends StatelessWidget {
               children: [
                 Text(
                   hadith.title,
-                  style: Theme.of(context)
-                      .textTheme
-                      .labelMedium
-                      ?.copyWith(color: Colors.white),
+                  style: Theme.of(context).textTheme.bodyLarge,
                 ),
-                const Divider(
-                  color: Colors.white,
+                Divider(
+                  color: Theme.of(context).indicatorColor,
                   thickness: 1,
                   indent: 40,
                   endIndent: 40,
