@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
+import 'package:quran_app/provider/theme_provider.dart';
 
 class ThemeBottomSheetWidget extends StatelessWidget {
   const ThemeBottomSheetWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // SettingsProvider myProvider = Provider.of(context);
+    ThemeProvider themeProvider = Provider.of(context);
     return Container(
       decoration: BoxDecoration(
         color: Theme.of(context).primaryColor,
@@ -18,16 +22,30 @@ class ThemeBottomSheetWidget extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          buildSelectedThemeWidget(
-            context,
-            AppLocalizations.of(context)!.light,
+          InkWell(
+            onTap: () {
+              themeProvider.changeAppTheme(ThemeMode.light);
+            },
+            child: themeProvider.isLightTheme()
+                ? buildSelectedThemeWidget(
+                    context,
+                    AppLocalizations.of(context)!.light,
+                  )
+                : buildUnSelectedThemeWidget(
+                    context, AppLocalizations.of(context)!.light),
           ),
           const SizedBox(
             height: 12,
           ),
-          buildUnSelectedThemeWidget(
-            context,
-            AppLocalizations.of(context)!.dark,
+          InkWell(
+            onTap: () {
+              themeProvider.changeAppTheme(ThemeMode.dark);
+            },
+            child: !(themeProvider.isLightTheme())
+                ? buildSelectedThemeWidget(
+                    context, AppLocalizations.of(context)!.dark)
+                : buildUnSelectedThemeWidget(
+                    context, AppLocalizations.of(context)!.dark),
           ),
         ],
       ),
@@ -42,10 +60,8 @@ class ThemeBottomSheetWidget extends StatelessWidget {
           selectedTheme,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
-        Icon(
+        const Icon(
           Icons.check,
-          color: Colors.white,
-          size: 28,
         ),
       ],
     );
@@ -58,9 +74,7 @@ class ThemeBottomSheetWidget extends StatelessWidget {
       children: [
         Text(
           unSelectedTheme,
-          style: Theme.of(context).textTheme.bodyLarge!.copyWith(
-                color: Colors.black,
-              ),
+          style: Theme.of(context).textTheme.bodySmall,
         ),
       ],
     );

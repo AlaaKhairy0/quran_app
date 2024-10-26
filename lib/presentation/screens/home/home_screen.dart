@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:quran_app/core/assets_manager.dart';
 import 'package:quran_app/presentation/screens/home/tabs/hadith_tab/hadith_tab.dart';
 import 'package:quran_app/presentation/screens/home/tabs/quran_tab/quran_tab.dart';
 import 'package:quran_app/presentation/screens/home/tabs/radio_tab/radio_tab.dart';
 import 'package:quran_app/presentation/screens/home/tabs/sebha_tab/sebha_tab.dart';
 import 'package:quran_app/presentation/screens/home/tabs/settings_tab/settings_tab.dart';
+import 'package:quran_app/provider/hadith_provider.dart';
+import 'package:quran_app/provider/theme_provider.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
@@ -19,7 +22,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   List<Widget> tabs = [
     QuranTab(),
-    HadithTab(),
+    ChangeNotifierProvider(
+        create: (context) => HadithProvider(), child: HadithTab()),
     SebhaTab(),
     RadioTab(),
     SettingsTab(),
@@ -27,10 +31,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    // SettingsProvider myProvider = Provider.of(context);
+    ThemeProvider themeProvider = Provider.of(context);
     return Container(
-      decoration: const BoxDecoration(
+      decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(AssetsManager.lightMainBg),
+          image: themeProvider.isLightTheme()
+              ? const AssetImage(AssetsManager.lightMainBg)
+              : const AssetImage(AssetsManager.darkMainBg),
           fit: BoxFit.fill,
         ),
       ),

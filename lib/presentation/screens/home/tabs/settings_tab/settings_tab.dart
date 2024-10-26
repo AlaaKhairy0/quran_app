@@ -1,13 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:provider/provider.dart';
 import 'package:quran_app/presentation/screens/home/tabs/settings_tab/widgets/language_bottom_sheet.dart';
 import 'package:quran_app/presentation/screens/home/tabs/settings_tab/widgets/theme_bottom_sheet.dart';
+import 'package:quran_app/provider/language_provider.dart';
+import 'package:quran_app/provider/theme_provider.dart';
 
 class SettingsTab extends StatelessWidget {
   const SettingsTab({super.key});
 
   @override
   Widget build(BuildContext context) {
+    // SettingsProvider myProvider = Provider.of(context);
+    ThemeProvider themeProvider = Provider.of(context);
+    LanguageProvider languageProvider = Provider.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
@@ -27,16 +33,18 @@ class SettingsTab extends StatelessWidget {
               showThemeBottomSheet(context);
             },
             child: Container(
-              padding: EdgeInsets.all(7),
+              padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
                 border: Border.all(
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).dividerColor,
                   width: 2,
                 ),
               ),
               child: Text(
-                AppLocalizations.of(context)!.light,
+                themeProvider.isLightTheme()
+                    ? AppLocalizations.of(context)!.light
+                    : AppLocalizations.of(context)!.dark,
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
             ),
@@ -58,16 +66,16 @@ class SettingsTab extends StatelessWidget {
               showLanguageBottomSheet(context);
             },
             child: Container(
-              padding: const EdgeInsets.all(7),
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(6),
                 border: Border.all(
-                  color: Theme.of(context).primaryColor,
+                  color: Theme.of(context).dividerColor,
                   width: 2,
                 ),
               ),
               child: Text(
-                'English',
+                languageProvider.isEnglish() ? 'English' : 'العربية',
                 style: Theme.of(context).textTheme.headlineSmall,
               ),
             ),

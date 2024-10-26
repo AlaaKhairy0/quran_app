@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:quran_app/core/colors_manager.dart';
 
 class QuranHeaderWidget extends StatelessWidget {
   const QuranHeaderWidget({super.key});
@@ -12,7 +11,7 @@ class QuranHeaderWidget extends StatelessWidget {
         border: Border.symmetric(
           horizontal: BorderSide(
             width: 3,
-            color: ColorsManager.goldenColor,
+            color: Theme.of(context).dividerColor,
           ),
         ),
       ),
