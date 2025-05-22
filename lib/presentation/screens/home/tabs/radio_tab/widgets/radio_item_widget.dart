@@ -22,54 +22,57 @@ class RadioItemWidget extends StatelessWidget {
                 : ColorsManager.yellow,
           );
         }
-        return Column(
-          children: [
-            Text(
-              radioProvider.radioList[radioProvider.currentIndex].name ?? '',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            const SizedBox(
-              height: 60,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                IconButton(
-                  onPressed: () {
-                    radioProvider.prev();
-                  },
-                  icon: Icon(
-                    Icons.skip_previous,
-                    color: themeProvider.isLightTheme()
-                        ? ColorsManager.lightPrimary
-                        : ColorsManager.yellow,
+        return Directionality(
+          textDirection: TextDirection.ltr,
+          child: Column(
+            children: [
+              Text(
+                radioProvider.radioList[radioProvider.currentIndex].name ?? '',
+                style: Theme.of(context).textTheme.headlineMedium,
+              ),
+              const SizedBox(
+                height: 60,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      radioProvider.prev();
+                    },
+                    icon: Icon(
+                      Icons.skip_previous,
+                      color: themeProvider.isLightTheme()
+                          ? ColorsManager.lightPrimary
+                          : ColorsManager.yellow,
+                    ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    radioProvider.play();
-                  },
-                  icon: Icon(
-                    radioProvider.isPlay ? Icons.pause : Icons.play_arrow,
-                    color: themeProvider.isLightTheme()
-                        ? ColorsManager.lightPrimary
-                        : ColorsManager.yellow,
+                  IconButton(
+                    onPressed: () {
+                      radioProvider.play();
+                    },
+                    icon: Icon(
+                      radioProvider.isPlay ? Icons.pause : Icons.play_arrow,
+                      color: themeProvider.isLightTheme()
+                          ? ColorsManager.lightPrimary
+                          : ColorsManager.yellow,
+                    ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    radioProvider.next();
-                  },
-                  icon: Icon(
-                    Icons.skip_next,
-                    color: themeProvider.isLightTheme()
-                        ? ColorsManager.lightPrimary
-                        : ColorsManager.yellow,
-                  ),
-                )
-              ],
-            )
-          ],
+                  IconButton(
+                    onPressed: () {
+                      radioProvider.next();
+                    },
+                    icon: Icon(
+                      Icons.skip_next,
+                      color: themeProvider.isLightTheme()
+                          ? ColorsManager.lightPrimary
+                          : ColorsManager.yellow,
+                    ),
+                  )
+                ],
+              )
+            ],
+          ),
         );
       },
     );
