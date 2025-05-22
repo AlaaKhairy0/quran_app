@@ -8,7 +8,7 @@ import 'package:quran_app/provider/theme_provider.dart';
 import '../../../core/assets_manager.dart';
 
 class QuranDetailsScreen extends StatelessWidget {
-  QuranDetailsScreen({super.key});
+   QuranDetailsScreen({super.key});
 
   // List<String> verses = [];
   @override

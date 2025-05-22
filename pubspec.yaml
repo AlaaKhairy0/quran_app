@@ -40,6 +40,10 @@ dependencies:
   intl: any
   provider: ^6.1.2
   shared_preferences: ^2.2.3
+  win32: ^5.1.1
+  path_provider_windows: ^2.3.0
+  http: ^1.4.0
+  audioplayers: ^6.4.0
 
 dev_dependencies:
   flutter_test:
