@@ -10,7 +10,7 @@ A cross-platform Islamic mobile app developed with Flutter, offering essential r
 - 📜 **Ahadeth** – Browse authenticated Hadith collections offline
 - 🧿 **Animated Digital Sebha** – Interactive Tasbih counter with animation
 - 📻 **Islamic Radio** – Browse and stream Islamic audio content using the API:
-(mp3quran.net API)[https://mp3quran.net/api/v3/radios]
+[mp3quran.net API](https://mp3quran.net/api/v3/radios)
 - 🎨 **Dynamic Theming** – Light and dark modes with smooth switching
 - 🌍 **Localization** – Multilingual user interface
 
