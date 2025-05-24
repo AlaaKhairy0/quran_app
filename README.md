@@ -38,10 +38,9 @@ A cross-platform Islamic mobile app developed with Flutter, offering essential r
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/islamic-guidance-app.git
-cd islamic-guidance-app
+git clone https://github.com/your-username/quran-app.git
+cd quran-app
 flutter pub get
 flutter run
 ```
 
-## 📦 Folder S
